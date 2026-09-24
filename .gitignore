@@ -1,13 +1,43 @@
 # Maven
 target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+.mvn/timing.properties
+# Keep the wrapper jar if the wrapper is ever switched to a jar-based distribution
+!.mvn/wrapper/maven-wrapper.jar
 
-# IDEs
+# Java
+*.class
+hs_err_pid*
+replay_pid*
+
+# Logs (e.g. geckodriver.log / chromedriver.log written to the working directory)
+*.log
+
+# IntelliJ IDEA
 .idea/
 *.iml
-.vscode/
+*.ipr
+*.iws
+out/
+
+# Eclipse
 .classpath
 .project
 .settings/
+.factorypath
+.apt_generated/
+bin/
+
+# VS Code
+.vscode/
 
 # OS
 .DS_Store
+._*
+Thumbs.db
+desktop.ini
