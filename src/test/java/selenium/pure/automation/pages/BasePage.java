@@ -2,6 +2,7 @@ package selenium.pure.automation.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -39,7 +40,12 @@ public abstract class BasePage {
     protected void clickAndWaitForNavigation(By locator) {
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
         element.click();
-        wait.until(ExpectedConditions.stalenessOf(element));
+        // While the page is being replaced, Chrome may answer with a generic WebDriverException
+        // ("Node with given id does not belong to the document") instead of a stale element error.
+        // A dedicated wait ignores it and keeps polling until the element is reported as stale.
+        new WebDriverWait(driver, Config.timeout())
+                .ignoring(WebDriverException.class)
+                .until(ExpectedConditions.stalenessOf(element));
     }
 
     protected void type(By locator, String text) {
