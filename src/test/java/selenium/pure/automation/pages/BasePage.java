@@ -66,4 +66,12 @@ public abstract class BasePage {
     protected Alert waitForAlert() {
         return wait.until(ExpectedConditions.alertIsPresent());
     }
+
+    /**
+     * Waits for a frame to load and switches into it. From then on, the driver only sees
+     * that frame's document until it switches back (parentFrame or defaultContent).
+     */
+    protected void switchToFrame(By locator) {
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(locator));
+    }
 }
