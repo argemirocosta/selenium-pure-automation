@@ -1,5 +1,6 @@
 package selenium.pure.automation.pages;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
@@ -56,5 +57,13 @@ public abstract class BasePage {
 
     protected String text(By locator) {
         return waitVisible(locator).getText();
+    }
+
+    /**
+     * Waits for a native JavaScript popup (alert, confirm or prompt) and switches to it.
+     * Popups are not part of the DOM, so findElement cannot reach them.
+     */
+    protected Alert waitForAlert() {
+        return wait.until(ExpectedConditions.alertIsPresent());
     }
 }
