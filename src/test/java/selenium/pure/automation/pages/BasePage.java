@@ -22,6 +22,10 @@ public abstract class BasePage {
         this.wait = new WebDriverWait(driver, Config.timeout());
     }
 
+    public int windowCount() {
+        return driver.getWindowHandles().size();
+    }
+
     protected void open(String path) {
         driver.get(Config.baseUrl() + path);
     }
