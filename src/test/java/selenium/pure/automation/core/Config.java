@@ -6,9 +6,6 @@ import java.io.UncheckedIOException;
 import java.time.Duration;
 import java.util.Properties;
 
-/**
- * Reads settings with the precedence: system property (-D) > config.properties > default in code.
- */
 public final class Config {
 
     private static final String FILE = "config.properties";

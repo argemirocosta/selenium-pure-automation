@@ -18,7 +18,6 @@ public class LoginSteps {
 
     private LoginPage loginPage;
     private SecureAreaPage secureAreaPage;
-    // Flash message of the page the scenario is currently on
     private FlashMessage flashMessage;
 
     public LoginSteps(DriverContext context) {

@@ -5,19 +5,6 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.List;
 
-/**
- * Page structure:
- * <pre>
- * main page
- * ├── frame-top
- * │   ├── frame-left
- * │   ├── frame-middle
- * │   └── frame-right
- * └── frame-bottom
- * </pre>
- * Every method switches into the frames it needs and always goes back to the main page
- * in a finally block, so callers never end up stuck inside a frame.
- */
 public class NestedFramesPage extends BasePage {
 
     private static final String PATH = "/nested_frames";
@@ -54,7 +41,6 @@ public class NestedFramesPage extends BasePage {
             switchToFrame(LEFT_FRAME);
             String left = text(BODY);
 
-            // One level up, back to frame-top, to reach the sibling frame
             driver.switchTo().parentFrame();
             switchToFrame(RIGHT_FRAME);
             String right = text(BODY);

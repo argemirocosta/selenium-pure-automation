@@ -26,17 +26,12 @@ public class AddRemoveElementsPage extends BasePage {
         return this;
     }
 
-    /**
-     * @param position 1 for the first delete button, 2 for the second, and so on
-     */
     public AddRemoveElementsPage removeElement(int position) {
         driver.findElements(DELETE_BUTTONS).get(position - 1).click();
         return this;
     }
 
     public int elementCount() {
-        // findElements returns an empty list when nothing matches;
-        // findElement would throw NoSuchElementException instead
         return driver.findElements(DELETE_BUTTONS).size();
     }
 }

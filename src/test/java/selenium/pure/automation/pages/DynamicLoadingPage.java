@@ -6,10 +6,6 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-/**
- * Example 1: the finish text is already in the DOM, only hidden until loading ends.
- * Example 2: the finish text is inserted into the DOM only when loading ends.
- */
 public class DynamicLoadingPage extends BasePage {
 
     private static final String PATH = "/dynamic_loading/";
@@ -31,14 +27,9 @@ public class DynamicLoadingPage extends BasePage {
         return this;
     }
 
-    /**
-     * Waits until the loading ends and the text becomes visible.
-     */
     public String finishText() {
         return text(FINISH_TEXT);
     }
-
-    // The two methods below read the current state without waiting
 
     public boolean isFinishTextInDom() {
         return !driver.findElements(FINISH_TEXT).isEmpty();

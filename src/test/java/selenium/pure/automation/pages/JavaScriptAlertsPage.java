@@ -40,9 +40,6 @@ public class JavaScriptAlertsPage extends BasePage {
         return waitForAlert().getText();
     }
 
-    // After accept or dismiss the popup closes and the driver is back on the page;
-    // no switch back is needed (unlike frames and windows)
-
     public JavaScriptAlertsPage accept() {
         waitForAlert().accept();
         return this;

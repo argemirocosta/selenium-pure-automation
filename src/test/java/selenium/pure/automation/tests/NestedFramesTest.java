@@ -28,7 +28,6 @@ class NestedFramesTest extends BaseTest {
         NestedFramesPage page = new NestedFramesPage(driver).open();
         page.middleText();
 
-        // Only works because middleText() went back to the main page
         assertEquals("BOTTOM", page.bottomText());
     }
 }

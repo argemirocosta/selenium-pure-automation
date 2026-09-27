@@ -7,9 +7,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import selenium.pure.automation.core.Config;
 
-/**
- * The green (success) or red (error) notification shown at the top of several pages.
- */
 public class FlashMessage {
 
     private static final By FLASH = By.id("flash");
@@ -22,7 +19,6 @@ public class FlashMessage {
     }
 
     public String text() {
-        // The element text includes the close icon, e.g. "You logged into a secure area!\n×"
         return element().getText().replace(CLOSE_ICON, "").trim();
     }
 

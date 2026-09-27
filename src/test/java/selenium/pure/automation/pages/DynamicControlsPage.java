@@ -9,7 +9,6 @@ public class DynamicControlsPage extends BasePage {
     private static final String PATH = "/dynamic_controls";
 
     private static final By CHECKBOX = By.cssSelector("#checkbox-example input[type='checkbox']");
-    // The same button toggles between "Remove" and "Add"
     private static final By CHECKBOX_BUTTON = By.cssSelector("#checkbox-example button");
     private static final By CHECKBOX_MESSAGE = By.cssSelector("#checkbox-example #message");
 
@@ -28,7 +27,6 @@ public class DynamicControlsPage extends BasePage {
 
     public DynamicControlsPage removeCheckbox() {
         click(CHECKBOX_BUTTON);
-        // Also satisfied when the element no longer exists in the DOM
         wait.until(ExpectedConditions.invisibilityOfElementLocated(CHECKBOX));
         return this;
     }
@@ -49,7 +47,6 @@ public class DynamicControlsPage extends BasePage {
 
     public DynamicControlsPage enableInput() {
         click(INPUT_BUTTON);
-        // The input is visible the whole time; "clickable" means visible AND enabled
         wait.until(ExpectedConditions.elementToBeClickable(INPUT));
         return this;
     }

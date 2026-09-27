@@ -20,9 +20,6 @@ public class CheckboxesPage extends BasePage {
         return this;
     }
 
-    /**
-     * @param position 1 for the first checkbox, 2 for the second
-     */
     public boolean isChecked(int position) {
         return checkbox(position).isSelected();
     }

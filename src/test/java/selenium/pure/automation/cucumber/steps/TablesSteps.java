@@ -33,7 +33,6 @@ public class TablesSteps {
         tablesPage.sortBy(column);
     }
 
-    // Cucumber converts a two-column DataTable into a Map automatically
     @Then("the row for {string} should contain:")
     public void theRowShouldContain(String lastName, Map<String, String> expected) {
         Map<String, String> row = tablesPage.row(lastName);
@@ -50,8 +49,6 @@ public class TablesSteps {
 
     @Then("the {string} column should be sorted by amount")
     public void theColumnShouldBeSortedByAmount(String column) {
-        // Sorting "$100.00" and "$50.00" as text would put $100.00 first,
-        // so the values are compared as numbers
         List<BigDecimal> amounts = tablesPage.columnValues(column).stream()
                 .map(value -> new BigDecimal(value.replace("$", "")))
                 .toList();

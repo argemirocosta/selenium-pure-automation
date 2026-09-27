@@ -37,7 +37,6 @@ public class DropdownPage extends BasePage {
                 .toList();
     }
 
-    // Select wraps a <select> element and exposes the dropdown-specific operations
     private Select dropdown() {
         return new Select(waitVisible(DROPDOWN));
     }

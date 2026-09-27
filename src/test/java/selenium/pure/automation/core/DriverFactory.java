@@ -7,10 +7,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
-/**
- * Creates WebDriver instances. Driver binaries (and the browser itself, if missing)
- * are resolved by Selenium Manager, bundled with Selenium.
- */
 public final class DriverFactory {
 
     private static final Dimension WINDOW_SIZE = new Dimension(1920, 1080);
@@ -23,7 +19,6 @@ public final class DriverFactory {
             case CHROME -> new ChromeDriver(chromeOptions());
             case FIREFOX -> new FirefoxDriver(firefoxOptions());
         };
-        // Same size in headed and headless mode, so layouts behave the same
         driver.manage().window().setSize(WINDOW_SIZE);
         return driver;
     }
