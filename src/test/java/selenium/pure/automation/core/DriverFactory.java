@@ -25,6 +25,7 @@ public final class DriverFactory {
 
     private static ChromeOptions chromeOptions() {
         ChromeOptions options = new ChromeOptions();
+        options.setPageLoadTimeout(Config.pageLoadTimeout());
         if (Config.headless()) {
             options.addArguments("--headless=new");
         }
@@ -33,6 +34,7 @@ public final class DriverFactory {
 
     private static FirefoxOptions firefoxOptions() {
         FirefoxOptions options = new FirefoxOptions();
+        options.setPageLoadTimeout(Config.pageLoadTimeout());
         if (Config.headless()) {
             options.addArguments("-headless");
         }

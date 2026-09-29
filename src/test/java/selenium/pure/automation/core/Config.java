@@ -30,6 +30,10 @@ public final class Config {
         return Duration.ofSeconds(Long.parseLong(get("timeout", "10")));
     }
 
+    public static Duration pageLoadTimeout() {
+        return Duration.ofSeconds(Long.parseLong(get("pageLoadTimeout", "30")));
+    }
+
     private static String get(String key, String defaultValue) {
         String value = System.getProperty(key);
         if (value == null || value.isBlank()) {
