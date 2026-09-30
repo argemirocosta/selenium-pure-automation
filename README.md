@@ -47,6 +47,18 @@ Precedence: `-D` > `config.properties` > default in code.
 | `timeout`         | `10`                                 | Explicit wait timeout, in seconds    |
 | `pageLoadTimeout` | `30`                                 | Page load timeout, in seconds        |
 
+## Parallel execution
+
+Tests run in parallel with 4 threads, configured in `src/test/resources/junit-platform.properties`.
+JUnit tests run first, then Cucumber scenarios, so at most 4 browsers are open at the same time.
+`max-pool-size` caps the thread pool, since `parallelism` alone does not stop JUnit from creating extra threads.
+
+To run sequentially:
+
+```bash
+mvn test -Djunit.jupiter.execution.parallel.enabled=false -Dcucumber.execution.parallel.enabled=false
+```
+
 ## Project structure
 
 ```
@@ -60,6 +72,7 @@ src/test/java/selenium/pure/automation
 
 src/test/resources
 ├── config.properties
+├── junit-platform.properties
 ├── features     Gherkin feature files
 └── files        Files used by the upload scenario
 ```
@@ -70,7 +83,7 @@ src/test/resources
   and assertions live only in tests and steps.
 - **Explicit waits only**: no implicit waits and no `Thread.sleep`.
 - **One driver per test**: JUnit tests extend `BaseTest`, and Cucumber scenarios get a `DriverContext`
-  injected by PicoContainer.
+  injected by PicoContainer. No test state is static, which keeps parallel execution safe.
 - **Hybrid approach**: Cucumber covers business-like flows, and plain JUnit covers technical fundamentals.
   Both share the same Page Objects.
 
