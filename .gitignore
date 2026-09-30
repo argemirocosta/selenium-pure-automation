@@ -7,8 +7,6 @@ pom.xml.next
 release.properties
 dependency-reduced-pom.xml
 .mvn/timing.properties
-# Keep the wrapper jar if the wrapper is ever switched to a jar-based distribution
-!.mvn/wrapper/maven-wrapper.jar
 
 # Java
 *.class
